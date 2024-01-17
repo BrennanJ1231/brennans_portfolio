@@ -8500,11 +8500,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\516O\\dev\\my_portfolio\\my_portfolio.csproj",
+      "projectUniqueName": "C:\\Users\\516O\\brennans_portfolio\\my_portfolio.csproj",
       "projectName": "my_portfolio",
-      "projectPath": "C:\\Users\\516O\\dev\\my_portfolio\\my_portfolio.csproj",
+      "projectPath": "C:\\Users\\516O\\brennans_portfolio\\my_portfolio.csproj",
       "packagesPath": "C:\\Users\\516O\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\516O\\dev\\my_portfolio\\obj\\",
+      "outputPath": "C:\\Users\\516O\\brennans_portfolio\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\516O\\AppData\\Roaming\\NuGet\\NuGet.Config"
