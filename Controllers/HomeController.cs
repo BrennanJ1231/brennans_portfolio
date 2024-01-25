@@ -42,36 +42,46 @@ public class HomeController : Controller
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
     [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<ActionResult> Contact(EmailFormModel model)
+    public IActionResult Contact(EmailFormModel model)
+{
+    try
     {
         if (ModelState.IsValid)
         {
             var body = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
-            var message = new MailMessage();
-            message.To.Add(new MailAddress("Brennanmj123@gmail.com"));  // replace with valid value 
-            message.From = new MailAddress(model.FromEmail);  // replace with valid value
-            message.Subject = "Your email subject";
+            MailMessage message = new MailMessage();
+            message.To.Add(new MailAddress("Brennanmj123@gmail.com")); // replace with valid value
+            message.From = new MailAddress(model.FromEmail); // replace with valid value
+            message.Subject = "Portofolio email";
             message.Body = string.Format(body, model.FromName, model.FromEmail, model.Message);
             message.IsBodyHtml = true;
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com");
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new NetworkCredential("brennanmj123@gmail.com", "cabn glzh rabp jgbm"); // replace with valid value
+            smtp.Port = 587;
+            smtp.EnableSsl = true;
 
-            using (var smtp = new SmtpClient())
-            {
-                var credential = new NetworkCredential
-                {
-                    UserName = "brennanmj123@gmail.com",  // replace with valid value
-                    Password = "Bj#12312002"  // replace with valid value
-                };
-                smtp.Credentials = credential;
-                smtp.Host = "smtp-mail.gmail.com";
-                smtp.Port = 587;
-                smtp.EnableSsl = true;
-                await smtp.SendMailAsync(message);
-                return RedirectToAction("Sent");
-            }
+            smtp.Send(message);
+            return RedirectToAction("Sent");
+            
         }
         return View(model);
     }
+    catch (SmtpException ex)
+    {
+        // Log or handle the exception
+        Console.WriteLine("SMTP Exception: " + ex.Message);
+        // You may choose to return a specific error view or redirect to a custom error page.
+        return View("Error");
+    }
+    catch (Exception ex)
+    {
+        // Log or handle other exceptions
+        Console.WriteLine("Error: " + ex.Message);
+        return View("Error");
+    }
+}
+
     public ActionResult Sent()
     {
         return View();
