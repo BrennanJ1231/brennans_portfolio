@@ -69,9 +69,7 @@ public class HomeController : Controller
     }
     catch (SmtpException ex)
     {
-        // Log or handle the exception
         Console.WriteLine("SMTP Exception: " + ex.Message);
-        // You may choose to return a specific error view or redirect to a custom error page.
         return View("Error");
     }
     catch (Exception ex)

@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/9fed9b17-139e-4d17-b5a9-669ea6e3a433/resourceGroups/brennansPortfolio_group-b1d8/providers/Microsoft.Web/sites/brennansPortfolio",
+    "appService.deploySubpath": "bin/Publish"
+}
