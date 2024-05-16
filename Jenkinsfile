@@ -17,7 +17,7 @@ pipeline {
                 script {
                     // Restoring dependencies
                     //bat "cd ${DOTNET_CLI_HOME} && dotnet restore"
-                    sh "dotnet restore"
+                    // sh "dotnet restore"
 
                     // Building the application
                     sh "dotnet build --configuration Release"
