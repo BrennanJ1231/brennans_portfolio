@@ -1,9 +1,11 @@
 pipeline {
     agent any
 
-    environment {
-        DOTNET_CLI_HOME = "/usr/bin/dotnet"
+   environment {
+        DOTNET_CLI_HOME = "/usr/local/dotnet"
+        PATH = "${env.DOTNET_CLI_HOME}:${env.PATH}"
     }
+
 
     stages {
         stage('Checkout') {
