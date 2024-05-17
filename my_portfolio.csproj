@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
+    <ContainerBaseImage>registry.access.redhat.com/ubi8/dotnet-80-runtime:latest</ContainerBaseImage>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
